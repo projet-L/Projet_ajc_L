@@ -37,8 +37,7 @@ pipeline {
         stage('Save the build') {
             steps {
                 sh ''' mkdir -p /home/maximel/Desktop/savesJenkinsBuild '''
-                sh ''' tar cvfz $JOB_NAME-$BUILD_NUMBER.tar  /home/maximel/Desktop/savesJenkinsBuild '''
-                sh ''' mv $WORKSPACE/$JOB_NAME-$BUILD_NUMBER.tar /home/maximel/Desktop/savesJenkinsBuild'''
+                sh ''' tar cvfz /home/maximel/Desktop/savesJenkinsBuild/$JOB_NAME-$BUILD_NUMBER.tar .'''
             }
         }
     }
