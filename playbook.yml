@@ -1,0 +1,8 @@
+--- 
+- 
+  hosts: localhost
+  name: "plabook lancement flask en local foreground"
+  tasks: 
+    - 
+      name: "flask app"
+      shell: "python3 app.py"
