@@ -1,0 +1,13 @@
+---   
+    - name: Create Network
+      community.docker.docker_network:
+        name: haproxy_network
+
+    - name: Create Haproxy loadbalancer Container
+      community.docker.docker_container:
+        name: Haproxy-container
+        image: haproxy:latest
+        ports:
+          - "80:80"
+        network:
+          - name: haproxy_network
