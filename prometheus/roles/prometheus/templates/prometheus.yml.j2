@@ -5,8 +5,8 @@
   scrape_interval: 15s
   static_configs:
   - targets:
-{% for server in groups[prometheus_node_exporter_group] %}
-    - {{ server }}:9100
+{% for host in groups['others'] %}
+    - {{ host }}:9100
 {% endfor %}
 
 rule_files:
@@ -16,8 +16,9 @@ alerting:
   alertmanagers:
   - static_configs:
     - targets:
-      - "172.17.0.6:9093"
-
+    {% for host in groups['monitor'] %}
+      - {{ host }}:9093
+    {% endfor %}
 
 {% endif %}
 
