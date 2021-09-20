@@ -1,0 +1,12 @@
+---
+
+alertmanager_version: 0.23.0
+alertmanager_force_install: false
+
+alertmanager_config_dir: /etc/alertmanager
+alertmanager_data_dir: /var/lib/alertmanager
+
+alertmanager_config_file: 'alertmanager.yml'
+
+
+alertmanager_resolve_timeout: 3m
