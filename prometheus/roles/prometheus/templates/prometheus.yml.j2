@@ -9,6 +9,12 @@
     - {{ host }}:9100
 {% endfor %}
 
+- job_name: haproxy
+  scrape_interval: 15s
+  static_configs:
+  - targets:
+    - localhost:8404
+
 rule_files:
   - "rules.yml"
   
