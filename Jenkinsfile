@@ -34,6 +34,20 @@ pipeline {
                 sh "docker rmi $registry:latest"
             }
         }
+        stage('Créer le venv') {
+            steps {
+                withPythonEnv('python3') {
+                    sh '''pip install -r requirements.txt'''
+                    sh '''pytest'''
+                }
+            }
+        }
+        stage("nétoyer l'espace de travail") {
+            steps {
+                sh '''cd $WORKSPACE'''
+                sh '''rm -rf ./test'''
+            }
+        }
         stage('Save the build') {
             steps {
                 sh ''' mkdir -p /home/maximel/Desktop/savesJenkinsBuild '''
