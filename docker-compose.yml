@@ -1,0 +1,29 @@
+# TODO: uniquement utilisé pour le dev/les tests
+# à supprimer quand on déployera le code chez le "client"
+
+version: "3"
+
+services:
+    web1:
+        image: dockercloud/hello-world
+        container_name: web1
+        ports:
+            - "81:80"
+        networks:
+          haproxy_network:
+            ipv4_address: "192.168.100.10"
+
+    web2:
+        image: dockercloud/hello-world
+        container_name: web2
+        ports:
+            - "82:80"
+        networks:
+          haproxy_network:
+            ipv4_address: "192.168.100.11"
+
+
+networks:
+    haproxy_network:
+        external: true
+        name: haproxy_network

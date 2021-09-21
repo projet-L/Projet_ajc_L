@@ -1,0 +1,14 @@
+--- 
+- 
+  hosts: localhost
+    #name: "plabook lancement flask en local foreground"
+    #become: yes
+    #tasks: 
+    #- name: "flask app"
+    #  shell: "python3 app.py"
+
+  #name: create 1 web app test
+        
+
+  roles:
+     - haproxy-docker
