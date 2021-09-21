@@ -7,17 +7,18 @@ from email.header import decode_header
 import webbrowser
 import os
 import requests
+import jenkins
+import time
 
+#jenkins login
 
+JENKINS_URL = "http://localhost:8080"
+JENKINS_USERNAME = "Briak"
+JENKINS_PASSWORD = "Saphiros17"
 
 # account credentials
 username = "ProjetL.formation@gmail.com"
 password = "5-Formation"
-
-def clean(text):
-    # clean text for creating a folder
-    return "".join(c if c.isalnum() else "_" for c in text)
-    
 
 # create an IMAP4 class with SSL 
 imap = imaplib.IMAP4_SSL("imap.gmail.com")
@@ -60,8 +61,35 @@ def subject_find():
     imap.close()
     imap.logout()
     return sub
+    
+
+
+    
+def build_job(name, parameters=None, token=None):
+    jenkins_server = jenkins.Jenkins(JENKINS_URL, username=JENKINS_USERNAME, password=JENKINS_PASSWORD)
+    next_build_number = jenkins_server.get_job_info(name)['nextBuildNumber']
+    jenkins_server.build_job(name, parameters=parameters, token=token)
+    time.sleep(10)
+    build_info = jenkins_server.get_build_info(name, next_build_number)
+    return build_info
+
+
+
+
+
+
+
+
 subject_find()
 print(sub)
 
+alert=sub[0]
+if alert[0:7]=="[FIRING":
+    NAME_OF_JOB = "test"
+    TOKEN_NAME = "bob"
+    # Example Parameter
+    PARAMETERS = None
+output = build_job(NAME_OF_JOB, PARAMETERS, TOKEN_NAME)
+print ("Jenkins Build URL: {}".format(output['url']))
     
 
