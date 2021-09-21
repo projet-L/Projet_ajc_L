@@ -14,9 +14,9 @@ route:
 receivers:
 - name: 'alert-team'
   email_configs:
-  - to: "dieu.mibu@gmail.com"
-    from: 'dieu.mibu@gmail.com'
+  - to: "ProjetL.formation@gmail.com"
+    from: 'ProjetL.formation@gmail.com'
     smarthost: smtp.gmail.com:587
-    auth_username: 'dieu.mibu@gmail.com'
-    auth_password: 'saphiros'
+    auth_username: 'ProjetL.formation@gmail.com'
+    auth_password: '5-Formation'
 
