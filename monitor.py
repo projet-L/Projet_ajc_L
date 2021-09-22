@@ -30,6 +30,7 @@ status, messages = imap.select("INBOX")
 N = 3
 # total number of emails
 messages = int(messages[0])
+print(messages)
 sub=[]
 
 def subject_find():
@@ -81,22 +82,27 @@ def build_job(name, parameters=None, token=None):
 
 
 subject_find()
-print(sub)
 
-alert=sub[0]
-"""
-if alert[0:7]=="[FIRING":
-    NAME_OF_JOB = "test"
-    TOKEN_NAME = "bob"
-    # Example Parameter
-    PARAMETERS = None
-"""
-if alert[-3:]=="xy)":
-    NAME_OF_JOB = "test"
-    TOKEN_NAME = "bob"
-    # Example Parameter
-    PARAMETERS = None
-output = build_job(NAME_OF_JOB, PARAMETERS, TOKEN_NAME)
-print ("Jenkins Build URL: {}".format(output['url']))
+if len(sub)==0:
+    print("no new mail")
+    quit()
+for i in range(len(sub)):
+    alert=sub[i]
+
+    """
+    if alert[0:7]=="[FIRING":
+        NAME_OF_JOB = "test"
+        TOKEN_NAME = "bob"
+        # Example Parameter
+        PARAMETERS = None
+    """
+    if alert[-3:]=="xy)":
+        NAME_OF_JOB = "test"
+        TOKEN_NAME = "bob"
+        # Example Parameter
+        PARAMETERS = None
+    output = build_job(NAME_OF_JOB, PARAMETERS, TOKEN_NAME)
+    print ("Jenkins Build URL: {}".format(output['url']))
+    sleep(3)
     
 
