@@ -26,17 +26,32 @@ imap = imaplib.IMAP4_SSL("imap.gmail.com")
 imap.login(username, password)
 
 status, messages = imap.select("INBOX")
+
+(stat, unread) = imap.search(None, '(UNSEEN)' )
 # number of top emails to fetch
-N = 3
+print(messages)
 # total number of emails
 messages = int(messages[0])
-print(messages)
+N = messages
+
+unread=int(unread[0])
+print(unread)
 sub=[]
 
-def subject_find():
+def unread_mail(unread, N):
+     
+     for u in unread:
+         print(u)
+         
+     return 0
+     
 
+def subject_find():
+    print("bob")
     for i in range(messages, messages-N, -1):
-    # fetch the email message by ID
+       
+        
+        # fetch the email message by ID
         res, msg = imap.fetch(str(i), "(RFC822)")
         for response in msg:
             if isinstance(response, tuple):
@@ -80,7 +95,7 @@ def build_job(name, parameters=None, token=None):
 
 
 
-
+unread_mail(unread, N)
 subject_find()
 
 if len(sub)==0:
@@ -103,6 +118,6 @@ for i in range(len(sub)):
         PARAMETERS = None
     output = build_job(NAME_OF_JOB, PARAMETERS, TOKEN_NAME)
     print ("Jenkins Build URL: {}".format(output['url']))
-    sleep(3)
+    
     
 
