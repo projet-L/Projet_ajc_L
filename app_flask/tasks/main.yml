@@ -1,0 +1,12 @@
+---
+# tasks file for app_flask
+
+- name: "run docker app"
+  #shell: "docker run -d -p 5000:5000 image_application:latest"
+  community.docker.docker_container:
+    name: application_container
+    image: image_application:latest
+    state: started
+    ports:
+      - "5000:5000"
+

@@ -1,0 +1,6 @@
+--- 
+- 
+  hosts: localhost
+  name: "plabook lancement flask avec docker"
+  roles:
+    - app_flask
