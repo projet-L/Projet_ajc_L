@@ -13,8 +13,8 @@ import time
 #jenkins login
 
 JENKINS_URL = "http://localhost:8080"
-JENKINS_USERNAME = "Briak"
-JENKINS_PASSWORD = "Saphiros17"
+JENKINS_USERNAME = "admin"
+JENKINS_PASSWORD = "admin"
 
 # account credentials
 username = "ProjetL.formation@gmail.com"
@@ -103,6 +103,6 @@ for i in range(len(sub)):
         PARAMETERS = None
     output = build_job(NAME_OF_JOB, PARAMETERS, TOKEN_NAME)
     print ("Jenkins Build URL: {}".format(output['url']))
-    sleep(3)
+
     
 
