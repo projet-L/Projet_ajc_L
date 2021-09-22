@@ -8,7 +8,7 @@
     - name: Create Haproxy loadbalancer Container
       community.docker.docker_container:
         name: Haproxy-container
-        image: haproxytest:latest
+        image: maximelau/haproxy_container:latest
         state: started
         ports:
           - "80:80"
