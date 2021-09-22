@@ -1,0 +1,9 @@
+groups:
+- name: test
+  rules:
+  - alert: InstanceDown
+    # Condition for alerting
+    expr: up == 0
+    for: 1m
+    # Annotation - additional informational labels to store more information
+    

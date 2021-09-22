@@ -1,0 +1,22 @@
+global:
+
+
+route:
+  group_by: ['instance', 'severity']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 3h
+  routes:
+  - match:
+      alertname: InstanceDown
+  receiver: 'alert-team'
+
+receivers:
+- name: 'alert-team'
+  email_configs:
+  - to: "ProjetL.formation@gmail.com"
+    from: 'ProjetL.formation@gmail.com'
+    smarthost: smtp.gmail.com:587
+    auth_username: 'ProjetL.formation@gmail.com'
+    auth_password: '5-Formation'
+
