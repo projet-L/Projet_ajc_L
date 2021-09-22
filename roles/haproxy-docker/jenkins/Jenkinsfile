@@ -1,0 +1,38 @@
+pipeline {
+    environment {
+        registry = "maximelau/test_project"
+        registryCredential = 'goeland040695'
+    } 
+    
+    agent any
+    stages {
+        stage('Cloning Git') {
+            steps {
+                git 'https://github.com/projet-L/Projet_ajc_L.git'
+            }
+        }
+        stage('Building image') {
+            steps {
+                script {
+                    sh '''cd /var/lib/jenkins/workspace/docker_build_test'''
+                    sh '''docker build --tag "$registry:latest" --tag "$registry:$BUILD_NUMBER" ./roles/haproxy-docker'''
+                }
+            }
+        }
+        stage('Deploy Image') {
+            steps {
+                script {
+                    sh '''docker login -u maximelau -p $registryCredential'''
+                    sh '''docker push -a $registry'''
+                    sh '''docker logout'''
+                }
+            }
+        }
+        stage('Remove Unused docker image') {
+            steps {
+                sh "docker rmi $registry:$BUILD_NUMBER"
+                sh "docker rmi $registry:latest"
+            }
+        }
+    }
+}

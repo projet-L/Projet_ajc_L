@@ -1,0 +1,17 @@
+haproxy_default_path: "/etc/default/"
+
+haproxy_default_file: "haproxy"
+
+haproxy_conf_path: "/usr/local/etc/haproxy/"
+
+haproxy_conf_file: "haproxy.cfg"
+
+default_port: "80"
+
+haproxy_conf_directory: "/tmp/"
+
+server:
+
+- {ip: "192.168.100.10", servername: "web1" }
+
+- {ip: "192.168.100.11", servername: "web2" }
