@@ -1,5 +1,6 @@
 ---   
     - name: Create Network
+      become: yes
       community.docker.docker_network:
         name: haproxy_network
         ipam_config:
@@ -13,8 +14,8 @@
         ports:
           - "80:80"
     
-    - name: Add container to networks
-      community.docker.docker_container:
-        name: Haproxy-container
-        networks:
-          - name: haproxy_network
+            # - name: Add container to networks
+            #   community.docker.docker_container:
+            #     name: Haproxy-container
+            #     networks:
+            #       - name: haproxy_network

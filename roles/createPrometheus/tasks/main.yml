@@ -1,0 +1,4 @@
+---
+
+- name: create prometheus container
+  shell: Dockerfile_app/prometheus/deploy.sh --create 1
