@@ -15,3 +15,9 @@
   become: yes
   roles:
     - alertmanager
+
+- name: install grafana
+  hosts: monitor
+  become: yes
+  roles:
+    - grafana

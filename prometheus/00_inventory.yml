@@ -9,6 +9,9 @@ all:
     alertmanager:
       hosts:
         172.17.0.6
+    grafana:
+      hosts:
+        172.17.0.6
     others:
       hosts:
         172.17.0.9:

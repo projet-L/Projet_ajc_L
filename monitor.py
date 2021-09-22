@@ -84,7 +84,14 @@ subject_find()
 print(sub)
 
 alert=sub[0]
+"""
 if alert[0:7]=="[FIRING":
+    NAME_OF_JOB = "test"
+    TOKEN_NAME = "bob"
+    # Example Parameter
+    PARAMETERS = None
+"""
+if alert[-3:]=="xy)":
     NAME_OF_JOB = "test"
     TOKEN_NAME = "bob"
     # Example Parameter
