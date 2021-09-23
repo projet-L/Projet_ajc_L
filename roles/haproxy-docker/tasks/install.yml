@@ -1,20 +1,22 @@
 ---   
-    - name: Create Network
-      community.docker.docker_network:
-        name: haproxy_network
-        ipam_config:
-          - subnet: 192.168.100.0/24
+    # - name: Create Network
+    #   become: yes
+    #   community.docker.docker_network:
+    #     name: haproxy_network
+    #     ipam_config:
+    #       - subnet: 192.168.100.0/24
 
     - name: Create Haproxy loadbalancer Container
+      become: yes
       community.docker.docker_container:
         name: Haproxy-container
-        image: haproxytest:latest
+        image: maximelau/haproxy_container:latest
         state: started
         ports:
           - "80:80"
     
-    - name: Add container to networks
-      community.docker.docker_container:
-        name: Haproxy-container
-        networks:
-          - name: haproxy_network
+            # - name: Add container to networks
+            #   community.docker.docker_container:
+            #     name: Haproxy-container
+            #     networks:
+            #       - name: haproxy_network

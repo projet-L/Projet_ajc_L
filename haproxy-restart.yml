@@ -1,0 +1,7 @@
+---
+
+- name: restart/create Haproxy Container
+  hosts: localhost
+  become: yes
+  roles:
+    - haproxy-docker

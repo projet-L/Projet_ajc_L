@@ -4,10 +4,14 @@
   template: 
     src=haproxy.j2 
     dest={{ haproxy_conf_directory }}{{ haproxy_conf_file }}
-    owner=root group=root mode=644 
+    owner=root group=root mode=644  
+  tags: updatelb
 
-    
 - name: Copy HAProxy Conf File to docker
   shell: 
     docker cp /tmp/{{ haproxy_conf_file }} Haproxy-container:{{ haproxy_conf_path }}{{ haproxy_conf_file }}
   notify: haproxy-restart
+  
+  
+  tags: updatelb
+

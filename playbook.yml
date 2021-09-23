@@ -1,14 +1,42 @@
 --- 
-- 
+- name: launch Haporxy role
   hosts: localhost
-    #name: "plabook lancement flask en local foreground"
-    #become: yes
-    #tasks: 
-    #- name: "flask app"
-    #  shell: "python3 app.py"
-
-  #name: create 1 web app test
-        
-
+  become: yes
   roles:
-     - haproxy-docker
+    - haproxy-docker
+
+- name: "plabook lancement flask avec docker"
+  hosts: localhost
+  become: yes
+  roles:
+    - app_flask
+
+      #- name: Create Prometheus Container
+      #  hosts: localhost
+      #  roles:
+      #    - createPrometheus
+
+- name: install prometheus
+  hosts: monitor
+  become: yes
+  roles:
+    - prometheus
+  
+- name: install node-exporter
+  hosts: all
+  become: yes
+  roles:
+    - node-exporter
+    
+- name: install alertmanager
+  hosts: monitor
+  become: yes
+  roles:
+    - alertmanager
+  
+- name: install grafana
+  hosts: monitor
+  become: yes
+  roles:
+    - grafana
+

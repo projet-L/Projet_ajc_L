@@ -1,0 +1,30 @@
+#jinja2: lstrip_blocks: "True"
+{{ prometheus_var_config | to_nice_yaml(indent=2) }}
+{% if prometheus_node_exporter_group %}
+- job_name: node_exporter
+  scrape_interval: 15s
+  static_configs:
+  - targets:
+{% for host in groups['others'] %}
+    - {{ host }}:9100
+{% endfor %}
+
+- job_name: haproxy
+  scrape_interval: 15s
+  static_configs:
+  - targets:
+    - 172.17.0.3:8404
+rule_files:
+  - "rules.yml"
+  
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+    {% for host in groups['monitor'] %}
+      - {{ host }}:9093
+    {% endfor %}
+
+{% endif %}
+
+
