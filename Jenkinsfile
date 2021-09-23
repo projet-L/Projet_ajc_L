@@ -56,3 +56,17 @@ pipeline {
         }
     }
 }
+
+pipeline {
+    agent any
+    
+    stages {
+        stage('Reload HAProxy') {
+            steps {
+                git 'https://github.com/projet-L/Projet_ajc_L'
+                sh '''ansible-playbook playbook.yml -i 00_inventory.yml '''
+                sh '''ssh -oStrictHostKeyChecking=no jenkins@172.17.0.2'''
+            }
+        }
+    }
+}
