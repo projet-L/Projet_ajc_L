@@ -11,8 +11,17 @@ all:
         172.17.0.2
     grafana:
       hosts:
-        172.17.0.2
-    others:
+        172.17.0.2        
+        
+    appservers:
       hosts:
-        172.17.0.4:
+        appserver1:
+          ansible_host: 172.17.0.4
+          ansible_user: root
+          ansible_ssh_pass: formation
+        appserver2:
+          ansible_host: 172.17.0.5
+          ansible_user: root
+          ansible_ssh_pass: formation
+
 
