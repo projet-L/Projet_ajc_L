@@ -7,6 +7,7 @@
     #       - subnet: 192.168.100.0/24
 
     - name: Create Haproxy loadbalancer Container
+      become: yes
       community.docker.docker_container:
         name: Haproxy-container
         image: maximelau/haproxy_container:latest
