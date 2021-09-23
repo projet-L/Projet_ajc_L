@@ -1,10 +1,10 @@
 ---   
-    - name: Create Network
-      become: yes
-      community.docker.docker_network:
-        name: haproxy_network
-        ipam_config:
-          - subnet: 192.168.100.0/24
+    # - name: Create Network
+    #   become: yes
+    #   community.docker.docker_network:
+    #     name: haproxy_network
+    #     ipam_config:
+    #       - subnet: 192.168.100.0/24
 
     - name: Create Haproxy loadbalancer Container
       community.docker.docker_container:
