@@ -25,6 +25,10 @@ backend webservers
     server {{ host.servername }} {{ host.ip }}:{{ default_port }} maxconn 32 check
     {% endfor %}
 
-listen admin
-    bind *:8080
-    stats enable
+frontend stats
+   bind *:8404
+   option http-use-htx
+   http-request use-service prometheus-exporter if { path /metrics }
+   stats enable
+   stats uri /stats
+   stats refresh 10s
