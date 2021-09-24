@@ -11,7 +11,7 @@ services:
             - "81:80"
         networks:
           haproxy_network:
-            ipv4_address: "192.168.100.10"
+            ipv4_address: "172.17.0.10"
 
     web2:
         image: dockercloud/hello-world
@@ -20,7 +20,7 @@ services:
             - "82:80"
         networks:
           haproxy_network:
-            ipv4_address: "192.168.100.11"
+            ipv4_address: "172.17.0.11"
 
 
 networks:
