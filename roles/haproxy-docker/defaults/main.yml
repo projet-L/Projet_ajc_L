@@ -14,7 +14,7 @@ haproxy_conf_directory: "/tmp/"
 
 server:
 
-- {ip: "172.17.0.4", servername: "app_client_web" }
-- {ip: "172.17.0.10", servername: "web1" }
-- {ip: "172.17.0.11", servername: "web2" }
+- {ip: "172.17.0.4", servername: "app_client_web", default_port: "5000" }
+- {ip: "172.17.0.10", servername: "web1", default_port: "80" }
+- {ip: "172.17.0.11", servername: "web2", default_port: "80" }
 
