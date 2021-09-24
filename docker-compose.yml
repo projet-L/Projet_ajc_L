@@ -10,7 +10,7 @@ services:
         ports:
             - "81:80"
         networks:
-          haproxy_network:
+          default:
             ipv4_address: "172.17.0.10"
 
     web2:
@@ -19,11 +19,5 @@ services:
         ports:
             - "82:80"
         networks:
-          haproxy_network:
+          default:
             ipv4_address: "172.17.0.11"
-
-
-networks:
-    haproxy_network:
-        external: true
-        name: haproxy_network
