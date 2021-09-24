@@ -9,15 +9,8 @@ services:
         container_name: web1
         ports:
             - "81:80"
-        networks:
-          default:
-            ipv4_address: "172.17.0.10"
-
     web2:
         image: dockercloud/hello-world
         container_name: web2
         ports:
             - "82:80"
-        networks:
-          default:
-            ipv4_address: "172.17.0.11"
